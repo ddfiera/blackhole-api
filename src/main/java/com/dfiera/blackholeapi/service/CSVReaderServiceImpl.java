@@ -1,7 +1,7 @@
 package com.dfiera.blackholeapi.service;
 
-import com.dfiera.blackholeapi.entity.StockData;
-import com.dfiera.blackholeapi.repository.StockDataRepository;
+import com.dfiera.blackholeapi.entity.StockDataCSV;
+import com.dfiera.blackholeapi.repository.StockDataCSVRepository;
 import com.univocity.parsers.common.processor.BeanListProcessor;
 import com.univocity.parsers.csv.CsvParser;
 import com.univocity.parsers.csv.CsvParserSettings;
@@ -13,15 +13,15 @@ import java.util.List;
 @Service
 public class CSVReaderServiceImpl implements CSVReaderService{
 
-    private final StockDataRepository stockDataRepository;
+    private final StockDataCSVRepository stockDataCSVRepository;
 
-    public CSVReaderServiceImpl(StockDataRepository stockDataRepository) {
-        this.stockDataRepository = stockDataRepository;
+    public CSVReaderServiceImpl(StockDataCSVRepository stockDataCSVRepository) {
+        this.stockDataCSVRepository = stockDataCSVRepository;
     }
 
     @Override
     public void parseCSV(File file) {
-        BeanListProcessor<StockData> rowProcessor = new BeanListProcessor<>(StockData.class);
+        BeanListProcessor<StockDataCSV> rowProcessor = new BeanListProcessor<>(StockDataCSV.class);
 
         CsvParserSettings parserSettings = new CsvParserSettings();
         parserSettings.setRowProcessor(rowProcessor);
@@ -33,21 +33,21 @@ public class CSVReaderServiceImpl implements CSVReaderService{
 
         parser.parse(file);
 
-        List<StockData> beans = rowProcessor.getBeans();
+        List<StockDataCSV> beans = rowProcessor.getBeans();
 
         String company = file.getName().replaceAll(".csv", "");
 
-        List<StockData> stockDataList = stockDataRepository.findByCompany(company);
+        List<StockDataCSV> stockDataCSVList = stockDataCSVRepository.findByCompany(company);
 
 
-        for(StockData data: beans){
+        for(StockDataCSV data: beans){
             data.setCompany(company);
 
             boolean flag = true;
 
-            if(!stockDataList.isEmpty()) {
-                for(StockData stockData: stockDataList) {
-                    if(stockData.equalsTo(data)) {
+            if(!stockDataCSVList.isEmpty()) {
+                for(StockDataCSV stockDataCSV : stockDataCSVList) {
+                    if(stockDataCSV.equalsTo(data)) {
                         flag = false;
                         break;
                     }
@@ -55,7 +55,7 @@ public class CSVReaderServiceImpl implements CSVReaderService{
             }
 
             if(flag){
-                stockDataRepository.save(data);
+                stockDataCSVRepository.save(data);
             }
         }
         file.delete();
