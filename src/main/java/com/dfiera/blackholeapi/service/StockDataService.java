@@ -1,14 +1,14 @@
 package com.dfiera.blackholeapi.service;
 
-import com.dfiera.blackholeapi.entity.StockData;
+import com.dfiera.blackholeapi.entity.StockDataCSV;
 
 import java.util.List;
 
 public interface StockDataService {
 
-    List<StockData> retrieveAllData();
+    List<StockDataCSV> retrieveAllData();
 
-    List<StockData> retrieveDataByCompany(String company);
+    List<StockDataCSV> retrieveDataByCompany(String company);
 
-    void addData(StockData stockData);
+    void addData(StockDataCSV stockDataCSV);
 }
