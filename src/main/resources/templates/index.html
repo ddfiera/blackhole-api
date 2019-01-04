@@ -1,14 +1,64 @@
-<!DOCTYPE html>
+<!DOCTYPE HTML>
+<!--
+	Dimension by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-<form method="POST" enctype="multipart/form-data"
-      th:action="@{'/post/data'}">
-    <input type="file" name="file" />
-    <input type="submit">Upload</input>
-</form>
-</body>
+	<head>
+		<title>Blackhole API</title>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<!-- Favicon -->
+		<link href="../static/img/favicon/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180"
+			  th:href="@{/img/favicon/apple-touch-icon.png}"/>
+		<link href="../static/img/favicon/favicon-32x32.png" rel="icon" sizes="32x32" th:href="@{/img/favicon/favicon-32x32.png}"
+			  type="image/png"/>
+		<link href="../static/img/favicon/favicon-16x16.png" rel="icon" sizes="16x16" th:href="@{/img/favicon/favicon-16x16.png}"
+			  type="image/png"/>
+		<link href="../static/img/favicon/site.webmanifest" rel="manifest" th:href="@{/img/favicon/site.webmanifest}"/>
+		<link color="#5bbad5" href="../static/img/favicon/safari-pinned-tab.svg" rel="mask-icon"
+			  th:href="@{/img/favicon/safari-pinned-tab.svg}"/>
+		<meta content="#2b5797" name="msapplication-TileColor">
+		<meta content="#ffffff" name="theme-color">
+
+		<link href="../static/css/main.css" rel="stylesheet" th:href="@{/css/main.css}" type="text/css"/>
+		<noscript><link href="../static/css/noscript.css" rel="stylesheet" th:href="@{/css/noscript.css}"
+						type="text/css"/></noscript>
+	</head>
+	<body class="is-preload">
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Header -->
+					<header id="header">
+						<div class="logo">
+							<span class="icon fa-cloud"></span>
+						</div>
+						<div class="content">
+							<div class="inner">
+								<h1>Blackhole API</h1>
+								<p>An API to store and retrieve stock market data.<br> Powered by <a href="https://iexcloud.io/">IEX Cloud</a>.</p>
+							</div>
+						</div>
+					</header>
+
+				<!-- Footer -->
+					<footer id="footer">
+						<p class="copyright">&copy; Blackhole. Design: <a href="https://html5up.net">HTML5 UP</a>.</p>
+					</footer>
+			</div>
+
+		<!-- BG -->
+			<div id="bg"></div>
+
+		<!-- Scripts -->
+			<script src="../static/js/jquery.min.js" th:src="@{/js/jquery.min.js}" type="text/javascript"></script>
+			<script src="../static/js/browser.min.js" th:src="@{/js/browser.min.js}" type="text/javascript"></script>
+			<script src="../static/js/breakpoints.min.js" th:src="@{/js/breakpoints.min.js}" type="text/javascript"></script>
+			<script src="../static/js/util.js" th:src="@{/js/util.js}" type="text/javascript"></script>
+			<script src="../static/js/main.js" th:src="@{/js/main.js}" type="text/javascript"></script>
+	</body>
 </html>
